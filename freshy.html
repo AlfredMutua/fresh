@@ -6,32 +6,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>freshfoods</title>
     <link rel="stylesheet" href="styles1.css">
+   
 </head>
 
 <body>
 
-    <div class="slideshow-container">
-        <div class="slide fade">
-            <div class="details">
-                <h2>Fresh Foods</h2>
-                <h1>Simply delicious</h1>
-                <h3>We supply high quality organic products</h3>
+    <div class="wrap">
+        <div id="arrow-left" class="arrow"></div>
+        <div id="slider">
+            <div class="slide slide1">
+                <div class="slide-content">
+                    <h2>Fresh Foods</h2>
+                    <h1>Simply delicious</h1>
+                    <h3>We supply high quality organic products</h3>
+                    <a href="https://greenspoon.co.ke/home/?trueroas=20992257259&gad_source=1&gclid=CjwKCAiAibeuBhAAEiwAiXBoJNVxIv8Z_dv7xzexNFZJI7fopYlnz37Tdx-foD3iBlHDSed-EHKnHRoCeaAQAvD_BwE"
+                        target="_blank">
+                        <button>Shop Now</button>
+                    </a>
+                </div>
+                <div class="slide slide2">
+                    <div class="slide-content">
+                        <h2>Fresh Look</h2>
+                        <h1>100% Organic</h1>
+                        <h3>Farm Fresh Produce Right to Your Door</h3>
+                        <a href="https://greenspoon.co.ke/home/?trueroas=20992257259&gad_source=1&gclid=CjwKCAiAibeuBhAAEiwAiXBoJNVxIv8Z_dv7xzexNFZJI7fopYlnz37Tdx-foD3iBlHDSed-EHKnHRoCeaAQAvD_BwE"
+                            target="_blank">
+                            <button>Shop Now</button>
+                        </a>
+                    </div>
+                </div>
             </div>
-
         </div>
-
-        <div class="slide fade">
-            <div class="details">
-                <h2>Fresh Look</h2>
-                <h1>100% Organic</h1>
-                <h3>Farm Fresh Produce Right to Your Door</h3>
-            </div>
-            <a href="https://biznakenya.com/list-of-top-grocery-stores-in-kenya/" target="_blank">
-                <button>Shop Now</button>
-            </a>
-
-
+        <div id="arrow-right" class="arrow">
+            
         </div>
+    </div>
+
+    
+    <script>
+    
+    let sliderImages = document.querySelectorAll('.slide'),
+        arrowLeft = document.querySelector('#arrow-left'),
+        arrowRight = document.querySelector('#arrow-right'),
+        current = 0;
+
+    //clear all images 
+    function reset() {
+        for (let i = 0; i < sliderImages.length; i++) {
+            sliderImages[i].style.display = 'none';
+        }
+    }
+
+    //initialize slider
+    function startSlide() {
+        reset();
+        sliderImages[0].style.display = 'block';
+    }
+
+    //show previous
+    function slideLeft() {
+        reset();
+        sliderImages[current - 1].style.display = 'block';
+        current--;
+    }
+
+    //Show next
+    function slideRight() {
+        reset();
+        sliderImages[current + 1].style.display = 'block';
+        current++;
+    }
+
+    //left  arrow click
+    arrowLeft.addEventListener('click', function () {
+        if (current === 0) {
+            current = sliderImages.length;
+        }
+        slideLeft();
+    });
+
+    //Right  arrow click
+    arrowRight.addEventListener('click', function () {
+        if (current === sliderImages.length - 1) {
+            current = -1;
+        }
+        slideRight();
+    });
+
+
+    startSlide();
+
+</script>
+
 
 </body>
 
